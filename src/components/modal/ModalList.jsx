@@ -1,12 +1,12 @@
 import Modal from "./Modal";
 import { useState } from "react";
 import Button from "../button/Button";
-import useModal from "../../hooks/useModal";
+import useBooleanHandler from "../../hooks/useBooleanHandler";
 import { styled } from "styled-components";
 
 const ModalList = () => {
-  const [twoButtonModal, handleTwoButtonModal] = useModal(false);
-  const [oneButtonModal, handleOneButtonModal] = useModal(false);
+  const [twoButtonModal, handleTwoButtonModal] = useBooleanHandler();
+  const [oneButtonModal, handleOneButtonModal] = useBooleanHandler();
 
   return (
     <>

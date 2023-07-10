@@ -7,8 +7,8 @@ const SelectList = () => {
     <StSelectBox>
       <h1>Select</h1>
       <StSelectContainer>
-        <Select children="리액트"></Select>
-        <Select children="리액트"></Select>
+        <Select children="리액트" isHidden="false"></Select>
+        <Select children="리액트" isHidden="true"></Select>
       </StSelectContainer>
     </StSelectBox>
   );
@@ -25,6 +25,5 @@ const StSelectBox = styled.div`
   border: 3px solid rgb(221, 221, 221);
   height: 200px;
   overflow: hidden;
-  position: relative;
   margin-top: 50px;
 `;

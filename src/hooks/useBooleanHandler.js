@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useModal = () => {
+const useBooleanHandler = () => {
   //state
   const [value, setValue] = useState(false);
   //onChnageHandler
@@ -11,4 +11,4 @@ const useModal = () => {
   return [value, handler];
 };
 
-export default useModal;
+export default useBooleanHandler;
