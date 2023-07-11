@@ -2,7 +2,7 @@ import { css, styled } from "styled-components";
 
 const Button = ({ onClick, children, size, pOrN }) => {
   return (
-    <StBtn onClick={onClick} size={size} pOrN={pOrN}>
+    <StBtn onClick={onClick} size={size} $pOrN={pOrN}>
       {children}
     </StBtn>
   );
@@ -15,15 +15,18 @@ const StBtn = styled.button`
   border-radius: 8px;
   border: none;
   color: black;
+  &:active {
+    filter: brightness(85%);
+  }
 
   ${(props) =>
-    props.pOrN === "primary" &&
+    props.$pOrN === "primary" &&
     css`
       background-color: rgb(85, 239, 196);
     `}
 
   ${(props) =>
-    props.pOrN === "negative" &&
+    props.$pOrN === "negative" &&
     css`
       background-color: rgb(250, 177, 160);
       color: rgb(214, 48, 49);
@@ -55,7 +58,7 @@ const StBtn = styled.button`
 
     ${(props) =>
     props.size === "large" &&
-    props.pOrN === "negative" &&
+    props.$pOrN === "negative" &&
     css`
       border: 3px solid rgb(250, 177, 160);
     `}

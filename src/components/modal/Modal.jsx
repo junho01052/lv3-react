@@ -1,9 +1,10 @@
 import { Children, useState } from "react";
 import Button from "../button/Button";
 import { css, styled } from "styled-components";
+import ReactDom from "react-dom";
 
 const Modal = ({ children, handleOneButtonModal, handleTwoButtonModal, display }) => {
-  return (
+  return ReactDom.createPortal(
     <>
       <StModalBg onClick={handleOneButtonModal}></StModalBg>
       <StModal display={display}>
@@ -24,7 +25,8 @@ const Modal = ({ children, handleOneButtonModal, handleTwoButtonModal, display }
           </StTwoBtn>
         </div>
       </StModal>
-    </>
+    </>,
+    document.getElementById("portal")
   );
 };
 
@@ -79,6 +81,10 @@ const StOneBtn = styled.button`
   height: 40px;
   border-radius: 100%;
   cursor: pointer;
+
+  &:hover {
+    border: 1px solid black;
+  }
 
   ${(props) =>
     props.display === "twoButton" &&

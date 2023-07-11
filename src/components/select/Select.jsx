@@ -5,8 +5,6 @@ import useBooleanHandler from "../../hooks/useBooleanHandler";
 const Select = ({ children, isHidden }) => {
   const [openSelect, handleOpenSelect] = useBooleanHandler();
 
-  const node = useRef();
-
   const [select, setSelect] = useState(children);
 
   const onClickSelectListItem = (e) => {
@@ -16,20 +14,6 @@ const Select = ({ children, isHidden }) => {
 
   const optionData = ["리액트", "자바", "스프링", "리액트네이티브"];
 
-  useEffect(() => {
-    const clickOutside = (e) => {
-      // 모달이 열려 있고 모달의 바깥쪽을 눌렀을 때 창 닫기
-      if (openSelect && node.current && !node.current.contains(e.target)) {
-        handleOpenSelect();
-      }
-    };
-    document.addEventListener("mousedown", clickOutside);
-    return () => {
-      // Cleanup the event listener
-      document.removeEventListener("mousedown", clickOutside);
-    };
-  }, [openSelect]);
-
   return (
     <>
       <div>
@@ -38,7 +22,7 @@ const Select = ({ children, isHidden }) => {
           <div>▼</div>
         </StBtn>
         {openSelect && (
-          <StSelectListBox className="me" isHidden={isHidden}>
+          <StSelectListBox $isHidden={isHidden}>
             {optionData.map((option, i) => {
               return (
                 <StSelectItem key={i} onClick={onClickSelectListItem}>
@@ -77,7 +61,7 @@ const StSelectListBox = styled.div`
   overflow: hidden;
 
   ${(props) =>
-    props.isHidden === "false" &&
+    props.$isHidden === "false" &&
     css`
       position: absolute;
     `}

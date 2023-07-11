@@ -12,7 +12,7 @@ const InputList = () => {
   };
   const onChangePriceWithCommas = (e) => {
     const value = e.target.value;
-    const removedCommaValue = Number(value.replaceAll(",", ""));
+    const removedCommaValue = Number(value.replace(/[^0-9]/g, ""));
     setPrice(removedCommaValue.toLocaleString());
   };
 
